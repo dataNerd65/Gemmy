@@ -21,3 +21,4 @@ function showSpinner() {
 function hideSpinner() {
     document.getElementById('loading-spinner').classList.add('hidden');
 }
+
