@@ -14,3 +14,10 @@ document.getElementById("send-button").onclick = function(e){
     e.preventDefault();
     alert("This feature is still under development!")
 }
+function showSpinner() {
+    document.getElementById('loading-spinner').classList.remove('hidden');
+}
+
+function hideSpinner() {
+    document.getElementById('loading-spinner').classList.add('hidden');
+}
