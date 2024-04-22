@@ -7,6 +7,7 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
 const app = express();
 app.use(express.json()); // for parsing application/json
+app.use(express.static('../public')); // serving static files from the public dir
 
 app.post('/sendMessage', (req, res) => {
     const userMessage = req.body.message;
