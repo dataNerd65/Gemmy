@@ -25,9 +25,8 @@ app.post('/sendMessage', (req, res) => {
     })
     .catch(error => {
         console.error('Error:', error);
-        res.status(500).json({ error: 'An error occurred' });
+        const status = error.response ? error.response.status : 500;
+        const message = error.response ? error.response.data : 'An error occurred';
+        res.status(status).json({ error: message });
     });
 });
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log(`Server listening on port ${PORT}`));
