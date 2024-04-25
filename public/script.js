@@ -29,14 +29,26 @@ function handleResponse(response) {
         throw new Error(`HTTP error! Status: ${response.status}`);
     }
     return response.json().then(data => {
+        console.log('Response data:', data); // Log the response data
         if (data && data.response) {
             var newBotMessage = document.createElement('p');
             newBotMessage.textContent = data.response;
             newBotMessage.classList.add('message', 'bot-message');
             document.getElementById('chat-history').appendChild(newBotMessage);
+
+            console.log('New bot message created:', newBotMessage); // Log the new bot message
+        } else if (data && data.message) {
+            // Handle the case when data contains a message but not a response
+            var newBotMessage = document.createElement('p');
+            newBotMessage.textContent = data.message;
+            newBotMessage.classList.add('message', 'bot-message');
+            document.getElementById('chat-history').appendChild(newBotMessage);
+
+            console.log('New bot message created:', newBotMessage); // Log the new bot message
         }
     });
 }
+
 
 function handleError(error) {
     console.error('Fetch error:', error);
